@@ -64,3 +64,5 @@ Then(/complete the rest of of this scenario/) do
   # the line in your scenarios with the appropriate steps.
   raise "Remove this step from your .feature files"
 end
+
+
