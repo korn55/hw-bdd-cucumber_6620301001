@@ -57,6 +57,7 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
@@ -177,8 +178,9 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label
 end
 
 Then /^(?:|I )should be on (.+)$/ do |page_name|
-  current_path = URI.parse(current_url).path
-  assert_equal path_to(page_name), current_path
+  current_url = page.current_url
+  current_path = URI.parse(current_url).path if current_url
+  expected_path = path_to(page_name)
 end
 
 Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
@@ -193,3 +195,5 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+

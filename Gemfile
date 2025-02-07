@@ -31,4 +31,11 @@ end
 group :production do
   gem 'pg', '~> 0.2'
   gem 'rails_12factor'
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  
+  end
+  
 end

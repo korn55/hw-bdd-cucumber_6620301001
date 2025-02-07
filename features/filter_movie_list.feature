@@ -19,18 +19,20 @@ Background: movies have been added to database
   | Raiders of the Lost Ark | PG     | 12-Jun-1981  |
   | Chicken Run             | G      | 21-Jun-2000  |
 
-  And  I am on the RottenPotatoes home page
+  And I am on the RottenPotatoes home page
   Then 10 seed movies should exist
 
 Scenario: restrict to movies with "PG" or "R" ratings
   And I check the "PG" checkbox
-  Then complete the rest of of this scenario
-  # enter step(s) to check the "PG" and "R" checkboxes
-  # enter step(s) to uncheck all other checkboxes
-  # enter step to "submit" the search form on the homepage
-  # enter step(s) to ensure that PG and R movies are visible
-  # enter step(s) to ensure that other movies are not visible
+  And I check the "R" checkbox
+  And I uncheck all other checkboxes
+  And I submit the search form
+  Then I should see only movies with ratings:
+    | PG  |
+    | R   |
+
 
 Scenario: all ratings selected
-  # your steps here
-  Then complete the rest of of this scenario
+  And I check all checkboxes
+  And I submit the search form
+  Then I should see all the movies
